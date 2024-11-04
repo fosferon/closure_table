@@ -105,7 +105,7 @@ defmodule CTE.Ecto do
           depth: p.depth + 1
         }
 
-    new_records = repo.all(descendants) ++ [%{ancestor: leaf, descendant: leaf, depth: 0}]
+    new_records = repo.all(descendants) ++ [%{ancestor: ancestor, descendant: leaf, depth: 0}]
 
     descendants = Enum.map(new_records, fn r -> [r.ancestor, r.descendant] end)
 
